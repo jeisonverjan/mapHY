@@ -1,0 +1,215 @@
+:root {
+  --main-background: #272626;
+  --second-background: #4e3a6b;
+  --text: #fff;
+  --success: rgb(7, 128, 7);
+  --error: rgb(225, 15, 15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Bruno Ace";
+  letter-spacing: 0.5rem;
+  color: var(--text);
+}
+.background {
+  background-color: var(--main-background);
+  background-image: linear-gradient(
+    62deg,
+    var(--main-background) 0%,
+    var(--second-background) 100%
+  );
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 30%;
+  height: 100vh;
+  gap: 4rem;
+  padding: 1rem;
+}
+
+.game-container .game-title {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-bottom: 3px solid;
+  /* border: 1px solid; */
+}
+
+.game-container .game-title i {
+  font-size: 2.5rem;
+}
+
+.game-container .game-description-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.game-container .game-description {
+  font-style: italic;
+  font-size: large;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.game-play-btn {
+  width: 100%;
+  text-align: center;
+  height: auto;
+}
+
+.game-play-btn .play-btn {
+  cursor: pointer;
+  background-color: var(--second-background);
+  color: var(--text);
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px;
+  cursor: pointer;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.play-btn:hover {
+  filter: brightness(0.9);
+}
+
+.play-btn:active {
+  scale: 0.9;
+}
+
+/* Game Active */
+.game-container .game-active {
+  display: grid;
+  gap: 2rem;
+}
+
+.game-container .game-active-score .score {
+  color: var(--success);
+  font-weight: bold;
+  font-size: larger;
+}
+.game-container .game-active-country {
+  border: 3px solid;
+  padding: 2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.game-active .game-active-timer {
+  height: 5rem;
+  text-align: center;
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+
+.game-active .game-active-timer .timer {
+  font-size: xx-large;
+}
+
+.timer-gone{
+  color: var(--error);
+  font-weight: bolder;
+  font-size: 5rem;
+}
+
+.game-active .game-active-timer .timer::before {
+  content: "Timer:";
+  font-size: x-small;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+/* hidden game description */
+.game-container .hidden {
+  display: none;
+}
+
+/* Map container */
+.map-container {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-content: center;
+}
+
+.right-place {
+  background-color: var(--success);
+  border: 5px solid var(--success);
+  font-size: bolder;
+}
+
+/* PopUP container */
+
+.map-container .score-popup {
+  width: 400px;
+  height: 300px;
+  z-index: 500;
+  border-radius: 20px;
+  box-shadow: 0.5rem 0.5rem 0.5rem var(--second-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1.5rem;
+  font-size: x-large;
+}
+
+.map-container .hidden{
+  display: none;
+}
+
+.game-icon img {
+  width: 100px;
+  height: 100px;
+}
+
+
+/* Media Query */
+@media screen and (max-width: 850px){
+  .main-container{
+    flex-direction: column;
+  }
+  .game-container{
+    width: 100%;
+    height: auto;
+    font-size: x-small;
+    gap: 2rem;
+  }
+  .game-container .game-title{
+    font-size: x-small;
+    border-bottom: 1px solid;
+  }
+  .game-container .game-title i{
+    font-size: 2rem;
+  }
+  .game-container .game-description{
+    font-size: medium;
+    gap: 1rem;
+  }
+  .map-container{
+    height: 50vh;
+  }
+}

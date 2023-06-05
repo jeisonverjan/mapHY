@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Animate CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- css link -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- FontAwesome link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Bruno+Ace+SC&family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Leaflet API -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <!-- JavaSCript -->
+    <script defer type="module" src="app.js"></script>
+    <title>MapHY</title>
+  </head>
+  <body class="background">
+    <div class="main-container">
+      <div class="game-container background">
+        <div class="game-title">
+          <i class="fa-solid fa-street-view"></i>
+          <h1>Map/Me</h1>
+        </div>
+        <div class="game-description-box">
+          <div class="game-description">
+            <p>How are you at geography?</p>
+            <p>
+              A country will appear on the screen and you will have to find it
+              on the map on the right.
+            </p>
+            <p>Time is limited!!</p>
+          </div>
+          <div class="game-play-btn">
+            <button class="play-btn">Let's Play</button>
+          </div>
+        </div>
+        <div class="hidden game-active">
+          <div class="game-active-score">
+            <span>Score:<span class="score">0</span></span>
+          </div>
+          <div class="game-active-label">
+            <span>Click on:</span>
+          </div>
+          <div class="game-active-country">
+            <span class="country">-------------</span>
+          </div>
+          <div class="game-active-timer">
+            <span class="timer">00:10</span>
+          </div>
+          <div class="">
+            <span class="curr-level"></span>
+          </div>
+        </div>
+      </div>
+      <div id="map" class="map-container">
+        <div class="score-popup background hidden">
+          <span class="message animate__animated animate__rubberBand">Excellent!!</span>
+          <div class="game-icon">
+            <img class="animate__animated animate__bounceInDown" src="./images/background1.png" alt="Game Icon" />
+          </div>
+          <span class="animate__animated animate__bounceInRight">POINTS:<span class="curr-score">0</span></span>
+          <span class="level-nick"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="test.js"></script>
+</html>
