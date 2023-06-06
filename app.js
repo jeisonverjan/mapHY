@@ -14,6 +14,8 @@ import { countriesL1, countriesL2, countriesL3, countriesL4 } from './countries.
 
 //create levels
 class Level {
+    currentLanguage = 'en-US'
+    browserLanguage = navigator.language
 
     constructor(name) {
         this.name = name
@@ -29,12 +31,21 @@ class Level {
         this.countries = countries
         this.nick = nick
     }
-    getRandomCountry() {
+    async getRandomCountry() {
         const randomIndex = Math.trunc(Math.random() * this.countries.length)
         const randomCountry = this.countries[randomIndex]
+        if(this.currentLanguage !== this.browserLanguage){
+            randomCountry.name = await this.translateCountry(randomCountry.name)
+        }
         this.countries.splice(randomIndex, 1)
         return randomCountry
     }
+    translateCountry = async(countryName) => {
+        const response = await fetch(`https://api.mymemory.translated.net/get?q=${countryName}&langpair=${this.currentLanguage}|${this.browserLanguage}`)
+        const data = await response.json()
+        return data.responseData.translatedText
+    }
+    
 }
 
 
@@ -115,7 +126,7 @@ class App {
         async function getCountry() {
             try {
                 const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
-                const data = response.json()
+                const data = await response.json()
                 return data
 
             } catch (error) {
@@ -183,8 +194,8 @@ class App {
             this.#createLevel()
         }
     }
-    #showCountry() {
-        const randomCountry = this.#level.getRandomCountry()
+    async #showCountry() {
+        const randomCountry = await this.#level.getRandomCountry()
         this.#currentCountry = randomCountry
         countryEle.textContent = randomCountry.name
     }
